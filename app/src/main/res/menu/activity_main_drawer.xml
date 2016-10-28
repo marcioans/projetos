@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_grupo"
+            android:icon="@drawable/common_ic_googleplayservices"
+            android:title="Grupo" />
+        <item
+            android:id="@+id/nav_dependente"
+            android:icon="@drawable/common_ic_googleplayservices"
+            android:title="Dependente" />
+        <item
+            android:id="@+id/nav_vacina"
+            android:icon="@drawable/common_ic_googleplayservices"
+            android:title="Vacinas" />
+        <item
+            android:id="@+id/nav_consulta"
+            android:icon="@drawable/common_ic_googleplayservices"
+            android:title="Consultas" />
+        <item
+            android:id="@+id/nav_exame"
+            android:icon="@drawable/common_ic_googleplayservices"
+            android:title="Exames" />
+    </group>
+
+    <item android:title="Cadastro">
+        <menu>
+            <item
+                android:id="@+id/nav_grupos_cad"
+                android:icon="@drawable/common_ic_googleplayservices"
+                android:title="Cadastrar Grupo" />
+            <item
+                android:id="@+id/nav_dependente_cad"
+                android:icon="@drawable/common_ic_googleplayservices"
+                android:title="Cadastrar Dependentes" />
+        </menu>
+    </item>
+
+</menu>

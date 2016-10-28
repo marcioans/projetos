@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1062335514283",
+    "firebase_url": "https://saudenasnuvens.firebaseio.com",
+    "project_id": "saudenasnuvens",
+    "storage_bucket": "saudenasnuvens.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062335514283:android:1ee0437000e03b95",
+        "android_client_info": {
+          "package_name": "com.fucapi.projeto.saudenasnuvens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062335514283-50mrn1ckumfnr09r0a6d12oph6vhh8f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwHk5IF-c0fx16Hc3cJxWitRa5N634n0I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
