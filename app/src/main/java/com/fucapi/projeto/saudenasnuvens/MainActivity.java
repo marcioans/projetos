@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_grupo) {
-            startActivity(new Intent(this, UsuarioFragment.class));
+            startActivity(new Intent(this, GrupoFragment.class));
             finish();
         } else if (id == R.id.nav_dependente) {
 

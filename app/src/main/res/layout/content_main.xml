@@ -13,8 +13,12 @@
     tools:context="com.fucapi.projeto.saudenasnuvens.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
+    <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:name="com.fucapi.projeto.saudenasnuvens.GrupoFragment"
+        android:id="@+id/fragment"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        tools:layout="@layout/fragment_grupo" />
 </RelativeLayout>
