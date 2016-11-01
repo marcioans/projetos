@@ -2,29 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fucapi.projeto.saudenasnuvens.GrupoFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.fucapi.projeto.saudenasnuvens.fragment.GrupoFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:hint="Nome do Grupo"
-        android:singleLine="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="85dp"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_alignStart="@+id/button2" />
 
     <Button
         android:text="Adicionar Grupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="119dp"
         android:id="@+id/button2"
-        android:layout_below="@+id/editText"
+
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/first_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/MyTextInputLayoutErrorText">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/first_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/second_edit_text"
+            android:hint="Nome do Grupo"
+            />
+    </android.support.design.widget.TextInputLayout>
+
 </RelativeLayout>

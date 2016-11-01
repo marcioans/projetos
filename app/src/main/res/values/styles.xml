@@ -10,9 +10,13 @@
         <item name="actionOverflowButtonStyle">@style/CustomOverflowButton</item>
     </style>
 
+    <style name="MyTextInputLayoutErrorText" parent="TextAppearance.Design.Error">
+        <item name="android:textColor">@color/customErrorColor</item>
+    </style>
+
     <style name="CustomOverflowButton" parent="@android:style/Widget.Holo.Light.ActionButton.Overflow">
         <!-- alterar aqui o icone na actionbar -->
-        <item name="android:src">@android:drawable/ic_input_add</item>
+        <item name="android:src">@android:drawable/ic_lock_power_off</item>
     </style>
 
     <style name="CustomOverflowBack" parent="android:style/Widget.Holo.Light.ListPopupWindow">

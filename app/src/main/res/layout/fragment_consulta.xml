@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fucapi.projeto.saudenasnuvens.ConsultaFragment">
+    tools:context="com.fucapi.projeto.saudenasnuvens.fragment.ConsultaFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

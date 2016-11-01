@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
+
+//import android.support.v4.app.Fragment;
+
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,8 +18,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.fucapi.projeto.saudenasnuvens.fragment.ConsultaFragment;
+import com.fucapi.projeto.saudenasnuvens.fragment.DependenteFragment;
+import com.fucapi.projeto.saudenasnuvens.fragment.ExameFragment;
+import com.fucapi.projeto.saudenasnuvens.fragment.GrupoFragment;
+import com.fucapi.projeto.saudenasnuvens.fragment.VacinaFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,21 +34,44 @@ public class MainActivity extends AppCompatActivity
     // Firebase instance variables
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
+    private static FirebaseDatabase fbDatabase;
+
+    // Initialize Firebase Auth
+
+
     //private //mUsername
+
+    // Firebase instance variables
+    private DatabaseReference mFirebaseDatabaseReference;
+    //private FirebaseRecyclerAdapter<FriendlyMessage, MessageViewHolder> mFirebaseAdapter;
+
+    // [START declare_database_ref]
+    private DatabaseReference mDatabase;
+    // [END declare_database_ref]
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Ativando a persistencia offline
+
+        if(fbDatabase == null) {
+            fbDatabase = FirebaseDatabase.getInstance();
+            fbDatabase.setPersistenceEnabled(true);
+        }
+
+
+
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+
+
         if (mFirebaseUser == null) {
-            // Not signed in, launch the Sign In activity
-            startActivity(new Intent(this, EmailPasswordActivity.class));
-            finish();
-            return;
+            // Not logged in, launch the Log In activity
+            loadLogInView();
         } else {
             Toast.makeText(getApplicationContext(), "Bem vindo, "+ mFirebaseUser.getEmail(),
                     Toast.LENGTH_SHORT).show();
@@ -48,6 +80,11 @@ public class MainActivity extends AppCompatActivity
             //    mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             //}
         }
+
+
+        // [START initialize_database_ref]
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // [END initialize_database_ref]
         //Intent intent = new Intent(this, EmailPasswordActivity.class);
         //startActivity(intent);
 
@@ -74,6 +111,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void loadLogInView() {
+        Intent intent = new Intent(this, EmailPasswordActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -94,20 +138,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.action_opcao1:
-                // User chose the "Settings" item, show the app settings UI...
-                Toast.makeText(getApplicationContext(), "Ação Escolhida - 1",
-                        Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.action_opcao2:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
-                Toast.makeText(getApplicationContext(), "Ação Escolhida - 2",
-                        Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.action_opcao3:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
                 mFirebaseAuth.signOut();
@@ -128,19 +160,33 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_grupo) {
-            startActivity(new Intent(this, GrupoFragment.class));
-            finish();
+
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, new GrupoFragment()).commit();
+
         } else if (id == R.id.nav_dependente) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, new DependenteFragment()).commit();
 
         } else if (id == R.id.nav_vacina) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, new VacinaFragment()).commit();
 
         } else if (id == R.id.nav_consulta) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, new ConsultaFragment()).commit();
 
         } else if (id == R.id.nav_exame) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, new ExameFragment()).commit();
 
         } else if (id == R.id.nav_grupos_cad) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, new GrupoFragment()).commit();
 
         } else if (id == R.id.nav_dependente_cad) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, new GrupoFragment()).commit();
 
         }
 
