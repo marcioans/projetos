@@ -9,7 +9,6 @@ import android.support.design.widget.Snackbar;
 
 //import android.support.v4.app.Fragment;
 
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -123,6 +122,7 @@ public class MainActivity extends AppCompatActivity
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_itens, menu);
         return true;
     }
 
@@ -165,8 +165,6 @@ public class MainActivity extends AppCompatActivity
 
         }
     }
-
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
