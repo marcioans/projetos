@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_grupo"
-            android:icon="@drawable/common_ic_googleplayservices"
             android:title="Grupo" />
+        <!--android:icon="@drawable/ic_menu_share"-->
+
         <item
             android:id="@+id/nav_dependente"
-            android:icon="@drawable/common_ic_googleplayservices"
             android:title="Dependente" />
+        <!--android:icon="@drawable/common_ic_googleplayservices"-->
+
         <item
             android:id="@+id/nav_vacina"
-            android:icon="@drawable/common_ic_googleplayservices"
             android:title="Vacinas" />
+        <!--android:icon="@drawable/common_ic_googleplayservices"-->
+
         <item
             android:id="@+id/nav_consulta"
-            android:icon="@drawable/common_ic_googleplayservices"
             android:title="Consultas" />
+            <!--android:icon="@drawable/common_ic_googleplayservices"-->
+
         <item
             android:id="@+id/nav_exame"
-            android:icon="@drawable/common_ic_googleplayservices"
             android:title="Exames" />
+        <!--android:icon="@drawable/common_ic_googleplayservices"-->
+
     </group>
 
-    <item android:title="Cadastro">
+    <item android:title="Telas de cadastro">
         <menu>
             <item
                 android:id="@+id/nav_grupos_cad"
-                android:icon="@drawable/common_ic_googleplayservices"
                 android:title="Cadastrar Grupo" />
+            <!--android:icon="@drawable/common_ic_googleplayservices"-->
+
             <item
                 android:id="@+id/nav_dependente_cad"
-                android:icon="@drawable/common_ic_googleplayservices"
                 android:title="Cadastrar Dependentes" />
+            <!--android:icon="@drawable/common_ic_googleplayservices"-->
+
         </menu>
     </item>
 

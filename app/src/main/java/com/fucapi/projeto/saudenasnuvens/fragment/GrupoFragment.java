@@ -3,12 +3,15 @@ package com.fucapi.projeto.saudenasnuvens.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.fucapi.projeto.saudenasnuvens.MainActivity;
 import com.fucapi.projeto.saudenasnuvens.R;
 
 
@@ -34,6 +37,7 @@ public class GrupoFragment extends Fragment {
             public void onClick(View v){
                 Toast.makeText(getActivity().getApplicationContext()
                         ,"estou no fragmento", Toast.LENGTH_SHORT).show();
+
             }
         });
         return view;

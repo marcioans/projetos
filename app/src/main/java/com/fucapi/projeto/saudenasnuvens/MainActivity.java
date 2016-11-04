@@ -1,5 +1,7 @@
 package com.fucapi.projeto.saudenasnuvens;
 
+import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,6 +9,8 @@ import android.support.design.widget.Snackbar;
 
 //import android.support.v4.app.Fragment;
 
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +26,7 @@ import com.fucapi.projeto.saudenasnuvens.fragment.ConsultaFragment;
 import com.fucapi.projeto.saudenasnuvens.fragment.DependenteFragment;
 import com.fucapi.projeto.saudenasnuvens.fragment.ExameFragment;
 import com.fucapi.projeto.saudenasnuvens.fragment.GrupoFragment;
+import com.fucapi.projeto.saudenasnuvens.fragment.MyAlertDialogFragment;
 import com.fucapi.projeto.saudenasnuvens.fragment.VacinaFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,6 +40,8 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private static FirebaseDatabase fbDatabase;
+    //private int mStackLevel;
+
 
     // Initialize Firebase Auth
 
@@ -142,8 +149,14 @@ public class MainActivity extends AppCompatActivity
             case R.id.action_opcao1:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-                mFirebaseAuth.signOut();
-                startActivity(new Intent(this, EmailPasswordActivity.class));
+                //getSupportFragmentManager().beginTransaction()
+                //        .replace(R.id.frame_container, new MyDialogFragment(1, 2)).commit();
+                //openDialogFragment();
+                //mFirebaseAuth.signOut();
+                //startActivity(new Intent(this, EmailPasswordActivity.class));
+
+                showDialog();
+
                 return true;
             default:
                 // If we got here, the user's action was not recognized.
@@ -152,6 +165,8 @@ public class MainActivity extends AppCompatActivity
 
         }
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -186,7 +201,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_dependente_cad) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_container, new GrupoFragment()).commit();
+                    .replace(R.id.frame_container, new DependenteFragment()).commit();
 
         }
 
@@ -194,4 +209,34 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+    void showDialog() {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(
+                R.string.alert_dialog_two_buttons_title);
+        newFragment.show(getFragmentManager(), "dialog");
+
+    }
+
+    public void doPositiveClick() {
+        // Do stuff here.
+        mFirebaseAuth.signOut();
+        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("MainActivity");
+        ft.remove(prev);
+        startActivity(new Intent(this, EmailPasswordActivity.class));
+        finish();
+        Log.i("FragmentAlertDialog", "Positive click!");
+    }
+
+    public void doNegativeClick() {
+        // Do stuff here.
+        //Intent intent = new Intent(Intent.ACTION_MAIN);
+        //intent.addCategory(Intent.CATEGORY_HOME);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //startActivity(intent);
+        Log.i("FragmentAlertDialog", "Negative click!");
+    }
+
 }
