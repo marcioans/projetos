@@ -5,6 +5,8 @@
         android:id="@+id/action_opcao1"
         android:orderInCategory="100"
         android:title="sair"
-        app:showAsAction="never"/>
+        android:icon="@drawable/ic_action_name"
+        app:showAsAction="ifRoom|withText"
+        />
 
 </menu>
